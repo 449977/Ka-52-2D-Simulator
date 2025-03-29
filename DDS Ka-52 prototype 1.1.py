@@ -1,5 +1,4 @@
-#This code belongs to 449977, although the project is meant to be open source, this prototype is copy righted to ensure that 
-#no one steals the idea of the game before it is out. sorry, but trust isn't here yet...
+#This code is open source, and originaly written by 449977, you are free to share it
 import pygame
 import math
 import time
@@ -11,7 +10,7 @@ import sys
 import matplotlib.pyplot
 import socket
 
-#fonction pour l'IP utilisateur
+#function to write the user's IP address
 def WriteIP():
   heure_local=time.localtime()
   f = open("user_IP_log.txt", "w")
@@ -21,7 +20,7 @@ def WriteIP():
   f.close()
   
 
-
+#function to get the user's IP address
 def GetIP():
   f = open('user_IP_log.txt', 'r')
   userIP = (f.read())
@@ -32,13 +31,13 @@ WriteIP()
 IP = GetIP()
 print(IP)
 
-
-HAUTEUR = 600
-LONGEUR =600
+#screen size
+HAUTEUR = 600 #height
+LONGEUR =600 #length
 SCORE = 2
 
 
-# Definit des couleurs RGB
+# we define the RGB colors
 BLACK = [0, 0, 0]
 WHITE = [255, 255, 255]
 GREEN = [0, 255, 0]
@@ -70,8 +69,8 @@ def draw_window():#on peint sur la fenètre
 
 if __name__ == "__main__":
 
-# Le jeu continue tant que l'utilisateur ne ferme pas la fenêtre
-	Termine = False
+# The game continues while the user doesn't close the window
+	Done = False
 	comptage = 0
 
 #load the image(helicopter)
@@ -79,8 +78,8 @@ img = pygame.image.load('ka-52.png')
 img.convert()
 
 ############################################
-# BOUCLE PRINCIPALE DU PROGRAMME
-while not Termine:
+# Main game loop
+while not Done:
   comptage += 1
   SCORE += 1
   event = pygame.event.Event(pygame.USEREVENT)  # recupère la liste des évènements du joueur
@@ -89,7 +88,7 @@ while not Termine:
   # détecte le clic sur le bouton close de la fenêtre
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
-      Termine = True
+      Done = True
 
    # récupère la liste des touches claviers appuyeées sous la forme d'une liste de booléens
   KeysPressed = pygame.key.get_pressed()
@@ -97,7 +96,7 @@ while not Termine:
 
 
     # LOGIQUE
-  # touches déplacement
+  # movements
   if KeysPressed[pygame.K_LEFT]:
       dirS1 = [-1,0]
       print('left')
@@ -115,7 +114,7 @@ while not Termine:
     pygame.display.quit()
     sys.exit()
   
-  #démarage de l'hélicoptère:
+  #helicopter startup:
   if KeysPressed[pygame.K_t]:
     #0=off, 1= on
     if APU==0:
@@ -130,7 +129,7 @@ while not Termine:
 
 
 
-#collectif
+#collectif, it doesn't have any use right now...
 
 sensivité_du_collectif = 0.5
 acceleration_du_joueur = 0
