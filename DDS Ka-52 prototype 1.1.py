@@ -13,11 +13,11 @@ import socket
 #function to write the user's IP address
 def WriteIP():
   heure_local=time.localtime()
-  f = open("user_IP_log.txt", "w")
-  print('localtime= ',heure_local, file=f)
-  print('IP= ', socket.gethostbyname(socket.gethostname()), file=f)
-  print('****************************************',file=f)
-  f.close()
+  with f = open("user_IP_log.txt", "w"):
+  	print('localtime= ',heure_local, file=f)
+ 	 	print('IP= ', socket.gethostbyname(socket.gethostname()), file=f)
+ 		print('****************************************',file=f)
+  
   
 
 #function to get the user's IP address
@@ -52,16 +52,16 @@ APU=0 #1=on, 0=off
 GEARS=2 #0=retracted, 1=moving, and 2=extanded
 
 
-# Initialise la fenêtre de jeu
+# We initialize the game window
 TailleEcran = [HAUTEUR, LONGEUR]
 screen = pygame.display.set_mode(TailleEcran)
 pygame.display.set_caption("prototype 1")
 
-# Gestion du rafraichissement de l'écran
+# Frame rate control
 clock = pygame.time.Clock()
 
 
-def draw_window():#on peint sur la fenètre
+def draw_window():# We "paint" the window
   screen.fill(WHITE)
   screen.blit(img)
   pygame.display.update()
@@ -85,17 +85,17 @@ while not Done:
   event = pygame.event.Event(pygame.USEREVENT)  # recupère la liste des évènements du joueur
 
   # EVENEMENTS
-  # détecte le clic sur le bouton close de la fenêtre
+  # We detect if the user clicks on the close button(on their window)
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       Done = True
 
-   # récupère la liste des touches claviers appuyeées sous la forme d'une liste de booléens
+   # We get the list of the keyboard presses under a boolean form
   KeysPressed = pygame.key.get_pressed()
 
 
 
-    # LOGIQUE
+    # LOGICS
   # movements
   if KeysPressed[pygame.K_LEFT]:
       dirS1 = [-1,0]
