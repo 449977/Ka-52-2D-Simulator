@@ -32,8 +32,8 @@ IP = GetIP()
 print(IP)
 
 #screen size
-HAUTEUR = 600 #height
-LONGEUR =600 #length
+HEIGHT = 600 #height
+LENGTH =600 #length
 SCORE = 2
 
 
@@ -53,8 +53,8 @@ GEARS=2 #0=retracted, 1=moving, and 2=extanded
 
 
 # We initialize the game window
-TailleEcran = [HAUTEUR, LONGEUR]
-screen = pygame.display.set_mode(TailleEcran)
+ScreenSize = [HEIGHT, LENGTH]
+screen = pygame.display.set_mode(ScreenSize)
 pygame.display.set_caption("prototype 1")
 
 # Frame rate control
@@ -129,7 +129,7 @@ while not Done:
 
 
 
-#collectif, it doesn't have any use right now...
+#collective, it doesn't have any use right now...
 
 sensivité_du_collectif = 0.5
 acceleration_du_joueur = 0
